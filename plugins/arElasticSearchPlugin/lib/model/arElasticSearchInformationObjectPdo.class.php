@@ -24,6 +24,12 @@
  * @subpackage arElasticSearchPlugin
  * @author     David Juhasz <david@artefactual.com>
  */
+  /**
+ * Extended methods for compliance to the Portuguese National Portal of Archives, see <https://portal.arquivos.pt/>.
+ *
+ * @author Ricardo Pinho <ricardodepinho@gmail.com>
+ */
+ 
 class arElasticSearchInformationObjectPdo
 {
   public
@@ -385,17 +391,18 @@ class arElasticSearchInformationObjectPdo
 
     $refcode = '';
     $this->repository = $this->getRepository();
+    $separatorCHR = sfConfig::get('app_separator_character');
 
     if (isset($this->repository) && $includeRepoAndCountry)
     {
       if (null != $cc = $this->repository->getCountryCode(array('culture' => $this->__get('culture'))))
       {
-        $refcode .= $cc.' ';
+        $refcode .= $cc.$separatorCHR;
       }
 
       if (isset($this->repository->identifier))
       {
-        $refcode .= $this->repository->identifier.' ';
+        $refcode .= $this->repository->identifier.$separatorCHR;
       }
     }
 
@@ -414,7 +421,7 @@ class arElasticSearchInformationObjectPdo
       $identifiers[] = $this->identifier;
     }
 
-    $refcode .= implode(sfConfig::get('app_separator_character', '-'), $identifiers);
+    $refcode .= implode(sfConfig::get('app_separator_character', $separatorCHR), $identifiers);
 
     return $refcode;
   }
