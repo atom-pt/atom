@@ -28,6 +28,13 @@
  * @author Mathieu Fortin Library and Archives Canada <mathieu.fortin@lac-bac.gc.ca>
  * @author Mark Triggs, Teaspoon Consulting Pty Ltd <mark@teaspoon-consulting.com>
  */
+ /**
+ * Extended methods for compliance to the Portuguese National Portal of Archives, see <https://portal.arquivos.pt/>.
+ *
+ * @author Ricardo Pinho <ricardodepinho@gmail.com>
+ */
+
+ 
 class QubitInformationObject extends BaseInformationObject
 {
   const
@@ -3322,9 +3329,10 @@ class QubitInformationObject extends BaseInformationObject
 
     if ($includeRepoAndCountry)
     {
+      $separatorCHR = sfConfig::get('app_separator_character);
       if (isset($repository->identifier))
       {
-        $identifier = "$repository->identifier $identifier";
+        $identifier = "$repository->identifier$separatorCHR$identifier";
       }
 
       if (isset($repository))
@@ -3333,7 +3341,7 @@ class QubitInformationObject extends BaseInformationObject
 
         if (isset($countryCode))
         {
-          $identifier = "$countryCode $identifier";
+          $identifier = "$countryCode$separatorCHR$identifier";
         }
       }
     }
