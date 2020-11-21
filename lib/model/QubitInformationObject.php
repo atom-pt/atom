@@ -3329,7 +3329,7 @@ class QubitInformationObject extends BaseInformationObject
 
     if ($includeRepoAndCountry)
     {
-      $separatorCHR = sfConfig::get('app_separator_character);
+      $separatorCHR = sfConfig::get('app_separator_character');
       if (isset($repository->identifier))
       {
         $identifier = "$repository->identifier$separatorCHR$identifier";
