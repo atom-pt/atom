@@ -418,6 +418,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 <?php  
 if (count($resource->digitalObjectsRelatedByobjectId))
 {
+  $registosonoro="";
   foreach ($resource->digitalObjectsRelatedByobjectId as $digitalObject)
   {
       foreach ($dc->type as $registosonoro)
