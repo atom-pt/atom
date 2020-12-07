@@ -205,7 +205,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     foreach ($resource->getDates() as $itemb)
     {
     }
-    if (strlen(Qubit::renderDate($itemb->endDate)) > 4 and strlen(Qubit::renderDate($item->endDate)) < 10 and
+    if (strlen(Qubit::renderDate($itemb->endDate)) > 4 and strlen(Qubit::renderDate($itemb->endDate)) < 10 and
 ($rest = substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 3, 1) == "-" or $rest =
  substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 4, 1) == "-" or
  $rest = substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 6, 1) == "-"))
