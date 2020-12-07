@@ -382,17 +382,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 
 <?php /* element ref="dc:identifier" */?>
   
-<dc:identifier><?php
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")
-    {
-      echo "https://";
-    }
-    else
-    {
-      echo "http://";
-    }
-    echo esc_specialchars($sf_request->getHost() . $sf_request->getRelativeUrlRoot() . '/' . $resource->slug);
-?></dc:identifier>
+<dc:identifier><?php echo esc_specialchars(sfConfig::get('app_siteBaseUrl') .'/'.$resource->slug) ?></dc:identifier>
 
 
 <?php /* element ref="dc:identifier" */?>
@@ -437,17 +427,7 @@ if (count($resource->digitalObjectsRelatedByobjectId))
 
   if (isset($resource->digitalObjectsRelatedByobjectId[0]) and $registosonoro != "sound")
   {
-    echo "<dc:relation>";
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")
-    {
-      echo "https://";
-    }
-    else
-    {
-      echo "http://";
-    }
-    echo $sf_request->getHost() . $sf_request->getRelativeUrlRoot() . $digitalObject->path . $digitalObject->getChildByUsageId(QubitTerm::THUMBNAIL_ID);
-    echo "</dc:relation>";
+    echo "<dc:relation>" . esc_specialchars(sfConfig::get('app_siteBaseUrl') . $digitalObject->path . $digitalObject->getChildByUsageId(QubitTerm::THUMBNAIL_ID)) . "</dc:relation>";
   }
   elseif (isset($resource->digitalObjects[0]) and $registosonoro == "sound")
   {
