@@ -56,7 +56,7 @@ Dublin Core elements output by the following order:
 <?php /* element ref="dc:title" */?>
 
 <?php
-
+    $notas = "";
     foreach ($resource->getNotesByType(array(
       'noteTypeId' => QubitTerm::GENERAL_NOTE_ID
     )) as $notas)
